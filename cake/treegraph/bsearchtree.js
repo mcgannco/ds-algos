@@ -53,9 +53,9 @@ function isBinarySearchTree(treeRoot) {
 }
 
 //tree construct
-let root = new BTreeNode(10);
-root.left = new BTreeNode(5);
-root.right = new BTreeNode(12);
-let node1 = root.left;
-let node2 = root.right;
-node1.left = new BTreeNode(100);
+// let root = new BTreeNode(10);
+// root.left = new BTreeNode(5);
+// root.right = new BTreeNode(12);
+// let node1 = root.left;
+// let node2 = root.right;
+// node1.left = new BTreeNode(100);
