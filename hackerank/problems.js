@@ -19,3 +19,32 @@ function hourglassSum(arr) {
 
 let testArr = [[1,1,1,0,0,0],[0,1,0,0,0,0], [1,1,1,0,0,0], [0,0,2,4,4,0],
 [0,0,0,2,0,0],[0,0,1,2,4,0]]
+
+function rotLeft(a, d) {
+  if(a.length < 2 || d === 0) {
+    return a;
+  }
+  let length = a.length;
+  let rotations = d % length;
+  return a.slice(rotations).concat(a.slice(0,rotations))
+}
+
+function minBribes(q) {
+  let numBribes = 0;
+  for (let i = q.length - 1; i >= 0; i--) {
+    debugger
+    if(Math.abs(q[i] - (i + 1)) > 2) {
+      return "To chaotic"
+    }
+
+    for (let j = Math.max(0, q[i] - 2); j < i; j++) {
+      debugger
+      if(q[j] > q[i]) {
+        numBribes +=1;
+      }
+    }
+  }
+  return numBribes
+}
+
+//

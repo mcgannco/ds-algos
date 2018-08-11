@@ -84,16 +84,45 @@ var network = {
   'Noam'    : ['Nathan', 'Jayden', 'William'],
   'Omar'    : ['Ren', 'Min', 'Scott']
 };
-function bfs(graph, startNode, endNode) {
-  let nodesToVisit = new Queue();
-  nodesToVisit.enqueue(startNode)
 
-  let nodesAlreadySeen = new Set([startNode]);
+function reconstructPath(howWeReachedNodes, startNode, endNode) {
+  let reversedShortestPath = [];
+  var currentNode = endNode;
+  while (currentNode !== null) {
+    debugger
+      reversedShortestPath.push(currentNode);
+      currentNode = howWeReachedNodes[currentNode.name];
+  }
+  return reversedShortestPath.reverse();
+
+}
+
+function bfs(graph, startNode, endNode) {
+  if(graph.indexOf(startNode) < 0) {
+    return "Start Node Not In Graph"
+  }
+
+  if(!graph.indexOf(endNode) < 0) {
+    return "End Node Not In Graph"
+  }
+
+  let nodesToVisit = new Queue();
+  nodesToVisit.enqueue(startNode);
+
+  let howWeReachedNodes = {};
+  howWeReachedNodes[startNode.name] = null;
   while (nodesToVisit.size() > 0) {
     let currentNode = nodesToVisit.dequeue();
     if(currentNode === endNode) {
-      return
+      return reconstructPath(howWeReachedNodes, startNode, endNode);
     }
-
+    currentNode.neighbors.forEach(neighbor => {
+      debugger
+      if(!howWeReachedNodes.hasOwnProperty(neighbor.name)) {
+        nodesToVisit.enqueue(neighbor);
+        howWeReachedNodes[neighbor.name] = currentNode
+      }
+    })
   }
+  return null;
 }
