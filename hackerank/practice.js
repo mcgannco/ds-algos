@@ -1,44 +1,28 @@
-class Node {
-  constructor(label) {
-    this.label = label;
-    this.left = null;
-    this.right = null;
-  }
-
-  insertLeft(el) {
-    this.left = new Node(el);
-    return this.left;
-  }
-
-  insertRight(el) {
-    this.right = new Node(el);
-    return this.right;
-  }
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
 }
 
-function isBsearchTree(root) {
-  if(!root) {
-    return "not a tree"
-  }
+var mergeTwoLists = function(l1, l2) {
+    let newLinkedList;
+    let currentNode;
+    let l1NodeList = l1;
+    let l2NodeList = l2;
 
-  let lowerLimit = Number.NEGATIVE_INFINITY;
-  let upperLimit = Number.POSITIVE_INFINITY;
-  let nodes = [{root, lowerLimit: lowerLimit, upperLimit: upperLimit}]
+    while(l1NodeList.val && l2NodeList.val ) {
 
-  while (node.length > 0) {
-    
-  }
-  return true;
-}
+    }
+};
 
-//
+let nodeA = new ListNode(1);
+let nodeB = new ListNode(2);
+let nodeC = new ListNode(4);
 
-//
+nodeA.next = nodeB;
+nodeB.next = nodeC;
 
-let root = new Node(100);
-let nodeOne = 200;
-let nodeTwo = 300;
-let nodeThree = 400;
-
-root.insertLeft(nodeOne);
-root.insertRight(nodeTwo);
+let nodeD = new ListNode(1);
+let nodeE = new ListNode(3);
+let nodeF = new ListNode(4);
+nodeD.next = nodeE;
+nodeE.next = nodeF;
