@@ -20,7 +20,6 @@ function reverseWords(arr) {
 
 
 function reverseCharacters(arr, left, right) {
-  debugger
   while(left < right) {
     let temp = arr[left];
     arr[left] = arr[right];
