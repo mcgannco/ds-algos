@@ -44,12 +44,12 @@
 //     if(key === null) {
 //       return false
 //     }
-//     let newNode = new Node(key, val)
-//     let oldFirst = this.head.next;
-//     oldFirst.prev = newNode
-//     this.head.next = newNode
-//     newNode.prev = this.head
-//     newNode.next = oldFirst
+    // let newNode = new Node(key, val)
+    // let oldFirst = this.head.next;
+    // oldFirst.prev = newNode
+    // this.head.next = newNode
+    // newNode.prev = this.head
+    // newNode.next = oldFirst
 //   }
 //
 //   first() {
