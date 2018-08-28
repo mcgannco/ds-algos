@@ -35,7 +35,11 @@ class Heap {
   }
 
   extractMax() {
-
+    let top = this.heap[1];
+    this.swap(1, this.heap.length - 1);
+    this.heap.pop();
+    this.bubbleDown(1)
+    return top;
   }
 
   insert(el) {
@@ -66,10 +70,6 @@ class Heap {
         break
       }
     }
-  }
-
-  delete() {
-
   }
 
   buildHeap() {
@@ -160,7 +160,15 @@ class Heap {
       }
     }
   }
-
 }
 
 let heap = new Heap([5,12,64,1,37,90,91,97])
+
+function heapSort(heap) {
+  let arr = [];
+  while(heap.heap.length > 1) {
+    debugger
+    arr.push(heap.extractMax())
+  }
+  return arr;
+}
