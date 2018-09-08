@@ -1,30 +1,49 @@
 class ListNode {
   constructor(val) {
     this.val = val;
-    this.next = null;
+    this.next = null
   }
 }
 
-var isPalindrome = function(head) {
-    let listLength = 0;
-    let currentNode = head;
-    while(currentNode) {
-        listLength += 1;
-        currentNode = currentNode.next
+let a = new ListNode(2)
+let b = new ListNode(3)
+let c = new ListNode(3)
+
+a.next = b
+
+var getIntersectionNode = function(headA, headB) {
+    if(!headA || !headB) return null
+    let [lenA, lenB] = [getLength(headA), getLength(headB)]
+    let [nodeA, nodeB] = [headA, headB]
+    let delta = Math.abs(lenA - lenB);
+    if(lenA > lenB) {
+        nodeA = moveAhead(nodeA, delta)
+    } else if(lenB > lenA) {
+        nodeB = moveAhead(nodeB, delta)
     }
-    let midPoint = listLength / 2;
-    reverseList(head, midPoint)
+
+    while(nodeA && nodeB) {
+        if(nodeA.val === nodeB.val) return nodeA
+        nodeA = nodeA.next
+        nodeB = nodeB.next
+    }
+    return null
 };
 
-var reverseList = function(head, len) {
-    let currentNode = head;
-    let prev = null;
-    let next = null;
-    while(len) {
-        nextNode = currentNode.next;
-        currentNode.next = prev;
-        prev = currentNode;
-        currentNode = nextNode
-        len -=1
+function getLength(head) {
+    let len = 0, curr = head;
+    while(curr) {
+        len += 1
+        curr = curr.next
     }
+    return len
+}
+
+function moveAhead(node, steps) {
+    let curr = node;
+    while(steps > 0) {
+        curr = curr.next
+        steps--
+    }
+    return curr
 }
