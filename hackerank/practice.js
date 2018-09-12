@@ -1,13 +1,12 @@
-var findKthLargest = function(nums, k) {
-    let tracker = 0
-    nums.sort(function(a, b) {
-      return a - b
-    });
-    
-    for(let i = nums.length - 1; i >= 0; i--) {
-        let num = nums[i];
-        tracker+=1
-        if(tracker === k) return num
+var plusOne = function(digits) {
+    let sum = 1;
+    for(let i = digits.length - 1; i >= 0; i--) {
+      sum += digits[i];
+        digits[i] = (sum % 10)
+        if(sum > 9) {sum = 1} else{sum = 0}
     }
+    if(digits[0] === 0) {
+        digits.unshift(1)
+    }
+    return digits
 };
-let input = [3,2,3,1,2,4,5,5,6,7,7,8,2,3,1,1,1,10,11,5,6,2,4,7,8,5,6]
