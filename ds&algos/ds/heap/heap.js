@@ -167,7 +167,6 @@ let heap = new Heap([5,12,64,1,37,90,91,97])
 function heapSort(heap) {
   let arr = [];
   while(heap.heap.length > 1) {
-    debugger
     arr.push(heap.extractMax())
   }
   return arr;
