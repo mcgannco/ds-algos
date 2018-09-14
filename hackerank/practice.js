@@ -1,12 +1,42 @@
-var plusOne = function(digits) {
-    let sum = 1;
-    for(let i = digits.length - 1; i >= 0; i--) {
-      sum += digits[i];
-        digits[i] = (sum % 10)
-        if(sum > 9) {sum = 1} else{sum = 0}
+const countUnivalSubtrees = function(root) {
+  if (!root) return 0
+
+  let count = 0
+
+  const traverse = (node) => {
+    if (node === null) return true
+
+    if (!node.left && !node.right) {
+      count++
+      return true
     }
-    if(digits[0] === 0) {
-        digits.unshift(1)
+
+    const leftSubtree = traverse(node.left)
+    const rightSubtree = traverse(node.right)
+
+    if (leftSubtree && rightSubtree) {
+      if (!node.right && node.val === node.left.val) {
+        count++
+        return true
+      }
+
+      if (!node.left && node.val === node.right.val) {
+        count++
+        return true
+      }
+
+      if (node.left && node.right) {
+        if (node.left.val === node.val && node.right.val === node.val) {
+          count++
+          return true
+        }
+      }
     }
-    return digits
+
+    return false
+  }
+
+  traverse(root)
+
+  return count
 };
