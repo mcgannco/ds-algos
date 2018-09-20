@@ -1,16 +1,15 @@
-var merge = function(nums1, m, nums2, n) {
-    let[mainPointer, pointerOne, pointerTwo] = [m+n-1,m-1,n-1];
-    while(pointerTwo >= 0) {
-        if(nums1[pointerOne] && nums1[pointerOne] > nums2[pointerTwo]) {
-            nums1[mainPointer] = nums1[pointerOne]
-            pointerOne--
-        } else {
-            nums1[mainPointer] = nums2[pointerTwo]
-            pointerTwo--
-        }
-        mainPointer--
+function sortKMessedArray(arr, k) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < i + 1 + k; j++) {
+      if(arr[i] > arr[j]) {
+        let tmp = arr[j];
+        arr[j] = arr[i]
+        arr[i] = tmp
+      }
     }
-};
+  }
+  return arr
+}
 
-let nums1 = [1,2,3,0,0,0], m = 3
-let nums2 = [2,5,6], n = 3
+let arr = [1, 4, 5, 2, 3, 7, 8, 6, 10, 9]
+let k = 2
