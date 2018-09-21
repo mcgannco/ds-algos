@@ -1,15 +1,33 @@
-function sortKMessedArray(arr, k) {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < i + 1 + k; j++) {
-      if(arr[i] > arr[j]) {
-        let tmp = arr[j];
-        arr[j] = arr[i]
-        arr[i] = tmp
-      }
-    }
+class ListNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
   }
-  return arr
 }
 
-let arr = [1, 4, 5, 2, 3, 7, 8, 6, 10, 9]
-let k = 2
+let a = new ListNode(1)
+let b = new ListNode(2)
+let c = new ListNode(3)
+
+a.right = b
+b.left = c
+
+
+var inorderTraversal = function(root) {
+    let stack = [root];
+    let traversed = [];
+    let curr = root.left;
+    if(!root) return traversed;
+    debugger
+    while(stack.length || curr) {
+        while(curr) {
+            stack.push(curr)
+            curr = curr.left
+        }
+        curr = stack.pop()
+        traversed.push(curr.val)
+        curr = curr.right
+    }
+    return traversed
+};
