@@ -1,33 +1,19 @@
-class ListNode {
-  constructor(val) {
-    this.val = val;
-    this.left = null;
-    this.right = null;
-  }
-}
+var subsets = function(nums) {
+  debugger
+    var r = [];
 
-let a = new ListNode(1)
-let b = new ListNode(2)
-let c = new ListNode(3)
+    if (nums.length == 0) r.push([]);
+    else {
+        r = subsets(nums.slice(0, nums.length - 1));
 
-a.right = b
-b.left = c
+        var len = r.length;
 
-
-var inorderTraversal = function(root) {
-    let stack = [root];
-    let traversed = [];
-    let curr = root.left;
-    if(!root) return traversed;
-    debugger
-    while(stack.length || curr) {
-        while(curr) {
-            stack.push(curr)
-            curr = curr.left
+        for(var i = 0; i < len; i++) {
+            var m = r[i].slice();
+            m.push(nums[nums.length - 1]);
+            r.push(m);
         }
-        curr = stack.pop()
-        traversed.push(curr.val)
-        curr = curr.right
     }
-    return traversed
+
+    return r;
 };
