@@ -6,16 +6,23 @@ class TreeNode {
   }
 }
 
-var sortedArrayToBST = function(nums) {
-    return helper(nums, 0, nums.length - 1)
+let a = new TreeNode(1)
+let b = new TreeNode(2)
+let c = new TreeNode(3)
+
+a.right = b
+b.left = c
+
+var inorderTraversal = function(root) {
+    let arr = []
+    helper(root, arr)
+    return arr
 };
 
-function helper(arr,start,end) {
+function helper(node, arr) {
   debugger
-    if(start > end) return null
-    let mid = Math.floor(end - start) / 2;
-    let newNode = new TreeNode(arr[mid]);
-    newNode.left = helper(arr, start, mid-1)
-    newNode.right = helper(arr, mid+1, end)
-    return newNode
+    if(!node) return;
+    helper(node.left)
+    arr.push(node.va)
+    helper(node.right)
 }
